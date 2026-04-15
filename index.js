@@ -2,7 +2,7 @@
 const weatherApi = "https://api.weather.gov/alerts/active?area="
 
 // Your code here!
-
+const weatherApi = "https://api.weather.gov/alerts/active?area=";
 
 // Grab the elements from the HTML that we need to interact with
 const fetchButton = document.getElementById("fetch-alerts");
@@ -79,7 +79,7 @@ async function getWeatherAlerts() {
 
     // 11. Edge case: API worked but no alerts exist for this state
     if (alerts.length === 0) {
-      alertsDisplay.innerHTML = "<p>✅ No active weather alerts for this state.</p>";
+      alertsDisplay.innerHTML = "<p> No active weather alerts for this state.</p>";
       return;
     }
 
@@ -110,7 +110,7 @@ async function getWeatherAlerts() {
   } catch (error) {
     // 13. If anything went wrong (network down, bad response, etc.)
     clearAlerts();
-    showError("❌ Could not fetch alerts. Check your connection and try again.");
+    showError(" Could not fetch alerts. Check your connection and try again.");
     console.error("Fetch error:", error); // log details for debugging
   }
 }
@@ -120,4 +120,6 @@ async function getWeatherAlerts() {
 fetchButton.addEventListener("click", getWeatherAlerts);
 
 // ── Also allow pressing Enter in the input field ──────────────────
-stateInput.addEventListener("keydown",
+stateInput.addEventListener("keydown",)
+
+
