@@ -2,7 +2,7 @@
 const weatherApi = "https://api.weather.gov/alerts/active?area="
 
 // Your code here!
-const weatherApi = "https://api.weather.gov/alerts/active?area=";
+
 
 // Grab the elements from the HTML that we need to interact with
 const fetchButton = document.getElementById("fetch-alerts");
@@ -41,13 +41,13 @@ async function getWeatherAlerts() {
 
   // 3. Check the input is not empty
   if (!stateCode) {
-    showError("⚠️ Please enter a state abbreviation (e.g. CA, TX).");
+    showError(" Please enter a state abbreviation (e.g. CA, TX).");
     return; // stop here — don't call the API
   }
 
   // 4. Check it's exactly 2 letters (basic validation)
   if (stateCode.length !== 2 || !/^[A-Z]+$/.test(stateCode)) {
-    showError("⚠️ Please enter a valid 2-letter state code (e.g. FL, NY).");
+    showError(" Please enter a valid 2-letter state code (e.g. FL, NY).");
     return;
   }
 
