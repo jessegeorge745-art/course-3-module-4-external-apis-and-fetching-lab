@@ -25,23 +25,29 @@ button.addEventListener('click', async () => {
 
         const data = await response.json();
 
-        if (data.features.length === 0) {
-            display.innerHTML = `<p>No active alerts for ${state}</p>`;
-            return;
+        //  Add alert count (FIX 1)
+        const count = data.features.length;
+        display.innerHTML = `<h2>Weather Alerts: ${count}</h2>`;
+
+        if (count === 0) {
+            display.innerHTML += `<p>No active alerts for ${state}</p>`;
+        } else {
+            // Display alerts
+            data.features.forEach(alert => {
+                const alertDiv = document.createElement('div');
+                alertDiv.classList.add('alert');
+
+                alertDiv.innerHTML = `
+                    <h3>${alert.properties.headline}</h3>
+                    <p>${alert.properties.description}</p>
+                `;
+
+                display.appendChild(alertDiv);
+            });
         }
 
-        // Display alerts
-        data.features.forEach(alert => {
-            const alertDiv = document.createElement('div');
-            alertDiv.classList.add('alert');
-
-            alertDiv.innerHTML = `
-                <h3>${alert.properties.headline}</h3>
-                <p>${alert.properties.description}</p>
-            `;
-
-            display.appendChild(alertDiv);
-        });
+        //  Clear input field (FIX 2)
+        input.value = '';
 
     } catch (error) {
         showError(error.message);
